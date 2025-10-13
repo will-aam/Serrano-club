@@ -1,0 +1,156 @@
+
+Build a mobile-first interactive UI prototype (no backend, no database recommendations) for a loyalty app called "Serrano Club". Interface language must be Portuguese (pt-BR). Use only fake data to illustrate flows. Deliver a working visual prototype with clickable screens and simulated interactions so a developer or stakeholder can evaluate UX and flows.
+Screens and features to implement (visual only):
+Splash / Login
+
+
+Simple login by phone number or CPF (simulate input).
+
+
+Option to register (name, telefone, email, placa opcional).
+
+
+Home (Cliente)
+
+
+Top: greeting and customer name.
+
+
+Prominent card showing saldo de pontos and vouchers ativos.
+
+
+CTA buttons: “Registrar Abastecimento”, “Meus Abastecimentos”, “Resgatar Descontos”.
+
+
+Progress bar showing litros acumulados toward next reward.
+
+
+Registrar Abastecimento
+
+
+Screen with a simulated QR Code scanner UI and a fallback input for chave/NFC-e.
+
+
+When scanning (simulate), show parsed fake data: posto (nome, CNPJ), litros, valor, data/hora, chave.
+
+
+Validation states: success (nota válida, posto participante), error (nota inválida), duplicate (nota já registrada).
+
+
+Button “Confirmar registro” that adds the record to the user’s history and updates points.
+
+
+Meus Abastecimentos
+
+
+List of past records with thumbnail of posto, data, litros, valor, status (registrado / pendente / rejeitado).
+
+
+Tap each item to view full nota data and a small image of a mock cupom.
+
+
+Resgatar Descontos
+
+
+Catalog of rewards with tiles (e.g., Voucher R$20 loja, Café grátis, 10% off na loja).
+
+
+Each reward shows required liters/points and CTA “Resgatar”.
+
+
+When redeemed, generate a voucher screen with QR code image, código alfanumérico, validade, and rules (uso único). Voucher status appears in Home.
+
+
+Voucher Detail & QR
+
+
+Show QR code, código, descrição, data de validade and a clear label “Ativo” or “Usado”.
+
+
+Provide an animation / confirmation modal when voucher is used (simulate).
+
+
+Painel Admin (web / desktop layout) — Validation
+
+
+Admin list of vouchers to validate with filters (ativos, expirados, usados).
+
+
+Scanner input (simulate scanning client QR) and manual field for voucher code.
+
+
+Dropdown for Forma de pagamento (fake list) and button Validar.
+
+
+On validation: mark voucher as usado, record funcionário (simulate), show success toast and audit log entry in UI.
+
+
+Show error flows: voucher já usado, voucher inválido, mismatch de CNPJ.
+
+
+Extras
+
+
+Notifications center (push simulation) showing “Voucher gerado”, “Voucher usado”, “Abastecimento registrado”.
+
+
+Simple Settings screen to edit profile and placas.
+
+
+Accessibility: readable font sizes, color contrast checks, keyboard navigation for web admin.
+
+
+Visual / UX guidance (do not suggest dev tech):
+Mobile-first, responsive to desktop for admin.
+
+
+Clean, modern UI. Use a warm accent color (e.g., deep red/orange) and neutral backgrounds.
+
+
+Use icons for QR, wallet, history, gifts, settings.
+
+
+Use micro-interactions: toasts, loading skeletons, success/failure states.
+
+
+All on-screen text must be in Portuguese (pt-BR).
+
+
+Fake data set (use this exact content):
+{
+  "user": {"id": 1, "nome": "William M.", "telefone": "79 99999-9999", "pontos": 420, "litros_acumulados": 78},
+  "veiculos": [{"placa":"ABC1D23"}, {"placa":"XYZ9Z99"}],
+  "postos": [
+    {"cnpj":"01234567000189","nome":"Posto Serrano Shell","endereco":"Av. Central, 123"},
+    {"cnpj":"98765432000155","nome":"Posto São João","endereco":"R. Principal, 45"}
+  ],
+  "abastecimentos": [
+    {"id":"a1","chave":"35241000000000000000000000000000000000001","posto_cnpj":"01234567000189","litros":40,"valor":200,"data":"2025-10-01T09:12:00","status":"registrado"},
+    {"id":"a2","chave":"35241000000000000000000000000000000000002","posto_cnpj":"01234567000189","litros":38,"valor":190,"data":"2025-10-08T18:03:00","status":"registrado"}
+  ],
+  "vouchers":[
+    {"id":"v1","codigo":"SERR20-0001","tipo":"Desconto Loja","valor":20,"status":"ativo","validade":"2025-11-01"},
+    {"id":"v2","codigo":"SERRCAF-0002","tipo":"Café Grátis","valor":0,"status":"usado","validade":"2025-09-30","data_validacao":"2025-09-25T10:00:00","funcionario":"João"}
+  ],
+  "formas_pagamento":["Dinheiro","Cartão","PIX"]
+}
+
+Acceptance criteria (what I want to see in Replit):
+Clickable mobile prototype with the screens above.
+
+
+Simulated QR scan flow that populates the register screen with fake nota data.
+
+
+Admin desktop page that can validate a voucher and update its state visually.
+
+
+All UI text in Portuguese.
+
+
+A small README in the Replit project that lists where to change the fake data and where each screen is implemented.
+
+
+Deliver the prototype. Keep scope limited to visuals, interactions and fake data only. Do not propose backend, database, or specific technology choices.
+
+
