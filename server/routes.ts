@@ -21,9 +21,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       finalidade_emissao: 1,
       cnpj_emitente: "01.984.422/0001-01", // Certifique-se que este é o CNPJ correto
 
-      // === A CORREÇÃO FINAL ESTÁ AQUI ===
-      indicador_presenca: 1, // 1 = Operação presencial
+      // === CAMPO FALTANDO DA DOCUMENTAÇÃO ===
+      consumidor_final: 1, // 1 = Sim, é consumidor final
 
+      presenca_comprador: 1, // 1 = Operação presencial
       modalidade_frete: 9,
       items: [
         {
@@ -48,9 +49,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     };
 
     try {
-      console.log(
-        "Tentando emitir NFC-e de teste (com indicador de presença)..."
-      );
+      console.log("Tentando emitir NFC-e de teste (com consumidor_final)...");
       const apiRes = await fetch(url, {
         method: "POST",
         headers: {
@@ -76,7 +75,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // ROTA DE CONSULTA
+  // ROTA DE CONSULTA (sem alterações)
   app.get("/api/nfce/:chave", async (req, res) => {
     const { chave } = req.params;
     const token = process.env.FOCUSNFE_TOKEN;
